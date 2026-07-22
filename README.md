@@ -1,1 +1,1454 @@
-# WWW.LAN.COM
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elevate your business with enterprise-grade financial and strategic consulting. Modern solutions tailored for growth.">
+    <meta name="keywords" content="Business Consulting, Financial Growth, Strategy, Enterprise Solutions">
+    <title>Apex Strategy | Enterprise Growth & Business Solutions</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. CSS VARIABLES & CORE STYLES
+           ========================================================================== */
+        :root {
+            --primary: #0A192F;       /* Dark Navy Blue */
+            --secondary: #1E3A8A;     /* Deep Accent Blue */
+            --accent: #2563EB;        /* Vibrant Royal Blue */
+            --accent-hover: #1D4ED8;  /* Hover Blue */
+            --dark: #0F172A;          /* Charcoal/Black */
+            --light: #F8FAFC;         /* Soft Background White */
+            --white: #FFFFFF;
+            --gray-100: #F1F5F9;
+            --gray-300: #CBD5E1;
+            --gray-600: #475569;
+            --gray-800: #1E293B;
+            
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 12px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* Reset & Base Setup */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Layout Container */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        /* Typography Helpers */
+        .text-center { text-align: center; }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) {
+            .section-title { font-size: 2.75rem; }
+        }
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            max-width: 650px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--gray-300);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Scroll Animations Base */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           2. NAVIGATION BAR
+           ========================================================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow-md);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 992px) {
+            .hamburger { display: block; }
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 3rem 1.5rem;
+                gap: 2rem;
+                transition: var(--transition);
+                box-shadow: var(--shadow-lg);
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-link {
+                font-size: 1.25rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ==========================================================================
+           3. HERO SECTION
+           ========================================================================== */
+        .hero {
+            padding-top: 10rem;
+            padding-bottom: 6rem;
+            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.875rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--accent);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 2.75rem;
+            line-height: 1.15;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title { font-size: 3.75rem; }
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        .hero-card-float {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--white);
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 260px;
+        }
+
+        @media (max-width: 576px) {
+            .hero-card-float { display: none; }
+        }
+
+        .hero-card-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        /* ==========================================================================
+           4. ABOUT SECTION
+           ========================================================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .about-image {
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           5. SERVICES SECTION
+           ========================================================================== */
+        .services {
+            background-color: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-100);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-desc {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           6. WHY CHOOSE US
+           ========================================================================== */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .why-us-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon-wrap {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .feature-text h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-text p {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+        }
+
+        /* ==========================================================================
+           7. PORTFOLIO / GALLERY SECTION
+           ========================================================================== */
+        .portfolio {
+            background-color: var(--light);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .portfolio-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .portfolio-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==========================================================================
+           8. FAQ SECTION
+           ========================================================================== */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-button {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 1.5rem;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-item.active {
+            border-color: var(--accent);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 1.25rem;
+        }
+
+        /* ==========================================================================
+           9. CONTACT SECTION
+           ========================================================================== */
+        .contact {
+            background-color: var(--light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1.2fr;
+            }
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background-color: var(--white);
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-card-icon {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .contact-card-text h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .contact-card-text p, .contact-card-text a {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .map-wrapper {
+            width: 100%;
+            height: 200px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* ==========================================================================
+           10. FOOTER & UTILITIES
+           ========================================================================== */
+        .footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-desc {
+            color: var(--gray-300);
+            font-size: 0.95rem;
+            max-width: 350px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--white);
+        }
+
+        .footer-links display: flex;
+        .footer-links flex-direction: column;
+        .footer-links gap: 0.75rem;
+
+        .footer-links a {
+            color: var(--gray-300);
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--gray-300);
+        }
+
+        /* Floating Widgets */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: var(--shadow-md);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+       1. STICKY NAVIGATION BAR
+       ========================================================================== -->
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-chart-line"></i> Apex Strategy
+            </a>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#why-us" class="nav-link">Why Us</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==========================================================================
+           2. HERO SECTION
+           ========================================================================== -->
+        <section class="hero" id="hero">
+            <div class="container hero-grid">
+                <div class="hero-content reveal">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-shield-halved"></i> Enterprise Strategy & Growth
+                    </div>
+                    <h1 class="hero-title">Scalable Solutions for Forward-Thinking Enterprises.</h1>
+                    <p class="hero-description">
+                        We partner with high-growth organizations to optimize capital allocation, accelerate scale, and design modern operational frameworks.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Schedule Consultation <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#services" class="btn btn-secondary">Explore Services</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper reveal">
+                    <!-- Black Professional Executive -->
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80" alt="Executive Business Leader" class="hero-image">
+                    <div class="hero-card-float">
+                        <div class="hero-card-icon">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--primary);">+142% Revenue</div>
+                            <div style="font-size: 0.8rem; color: var(--gray-600);">Average Growth Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           3. ABOUT SECTION
+           ========================================================================== -->
+        <section class="section-padding" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="reveal">
+                        <!-- Black Professional Leader -->
+                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1000&q=80" alt="Business Founder" class="about-image">
+                    </div>
+                    <div class="reveal">
+                        <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem;">About Our Firm</span>
+                        <h2 class="section-title" style="text-align: left; margin-top: 0.5rem;">Driving Enterprise Innovation with Discipline</h2>
+                        <p style="color: var(--gray-600); margin-bottom: 1rem;">
+                            Apex Strategy was built on a simple premise: modern businesses require dynamic, data-backed execution models. We assist leadership teams in navigating market shifts and executing growth initiatives with precision.
+                        </p>
+                        <p style="color: var(--gray-600);">
+                            Our multidisciplinary approach connects market intelligence, operational transformation, and financial restructuring into actionable success frameworks.
+                        </p>
+                        
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">10+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">$500M+</div>
+                                <div class="stat-label">Capital Optimized</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           4. SERVICES SECTION
+           ========================================================================== -->
+        <section class="section-padding services" id="services">
+            <div class="container">
+                <div class="text-center reveal">
+                    <h2 class="section-title">Core Capability Areas</h2>
+                    <p class="section-subtitle">Tailored business services engineered to streamline operations and unlock sustainable institutional value.</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card reveal">
+                        <div>
+                            <div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                            <h3 class="service-title">Financial Architecture</h3>
+                            <p class="service-desc">Strategic capital modeling, restructuring, and portfolio management optimized for long-term equity growth.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div>
+                            <div class="service-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                            <h3 class="service-title">Operational Excellence</h3>
+                            <p class="service-desc">Comprehensive supply chain, workflow, and corporate governance optimization to reduce margin leakage.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div>
+                            <div class="service-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                            <h3 class="service-title">Growth Acceleration</h3>
+                            <p class="service-desc">Market analysis and customer acquisition strategy built to expand revenue channels globally.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div>
+                            <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+                            <h3 class="service-title">Digital Transformation</h3>
+                            <p class="service-desc">Modernizing technology stacks and deploying data infrastructure for agile business operations.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div>
+                            <div class="service-icon"><i class="fa-solid fa-handshake"></i></div>
+                            <h3 class="service-title">M&A Advisory</h3>
+                            <p class="service-desc">End-to-end deal execution support, thorough due diligence, and post-merger integration planning.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card reveal">
+                        <div>
+                            <div class="service-icon"><i class="fa-solid fa-user-shield"></i></div>
+                            <h3 class="service-title">Risk Management</h3>
+                            <p class="service-desc">Proactive regulatory compliance frameworks and operational resilience models for enterprises.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           5. WHY CHOOSE US
+           ========================================================================== -->
+        <section class="section-padding" id="why-us">
+            <div class="container">
+                <div class="why-us-grid">
+                    <div class="reveal">
+                        <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem;">Why Apex Strategy</span>
+                        <h2 class="section-title" style="text-align: left; margin-top: 0.5rem;">Built for Impact, Proven by Outcomes</h2>
+                        <p style="color: var(--gray-600);">
+                            We skip traditional, static consulting binders in favor of real-world implementation. Our strategic advisors embed directly within your processes to build measurable momentum.
+                        </p>
+
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <div class="feature-icon-wrap"><i class="fa-solid fa-check"></i></div>
+                                <div class="feature-text">
+                                    <h4>Data-Driven Methodologies</h4>
+                                    <p>Decisions are anchored in robust quantitative modeling and primary market research.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-wrap"><i class="fa-solid fa-check"></i></div>
+                                <div class="feature-text">
+                                    <h4>Dedicated Executive Partners</h4>
+                                    <p>Work directly with senior industry veterans who understand your vertical deeply.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon-wrap"><i class="fa-solid fa-check"></i></div>
+                                <div class="feature-text">
+                                    <h4>Agile Execution Timelines</h4>
+                                    <p>We deploy frameworks quickly, minimizing operational downtime while maximizing agility.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal">
+                        <!-- Black Business Team Working -->
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Team Collaboration" style="border-radius: 16px; box-shadow: var(--shadow-xl); width: 100%; aspect-ratio: 4/3; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           6. PORTFOLIO / GALLERY
+           ========================================================================== -->
+        <section class="section-padding portfolio" id="portfolio">
+            <div class="container">
+                <div class="text-center reveal">
+                    <h2 class="section-title">Case Highlights</h2>
+                    <p class="section-subtitle">A glimpse into recent transformation projects executed for our enterprise clients.</p>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-card reveal">
+                        <!-- Black Professional presenting -->
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Fintech Expansion" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Fintech</span>
+                            <h3 class="portfolio-title">Cross-Border Scale</h3>
+                            <p style="color: var(--gray-600); font-size: 0.9rem;">Expanded regional operations across three markets within a 12-month timeline.</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-card reveal">
+                        <!-- Black Professional in tech/workspace -->
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Supply Chain Optimization" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Logistics</span>
+                            <h3 class="portfolio-title">Supply Modernization</h3>
+                            <p style="color: var(--gray-600); font-size: 0.9rem;">Reduced supply chain overhead by 22% using custom operational automation.</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-card reveal">
+                        <!-- Black Executive in meeting -->
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" alt="Corporate Restructuring" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Enterprise</span>
+                            <h3 class="portfolio-title">Corporate Restructuring</h3>
+                            <p style="color: var(--gray-600); font-size: 0.9rem;">Reorganized business units to support smooth Series-C funding execution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           7. FAQ SECTION
+           ========================================================================== -->
+        <section class="section-padding" id="faq">
+            <div class="container">
+                <div class="text-center reveal">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Clear answers regarding our engagement model and process.</p>
+                </div>
+
+                <div class="faq-container reveal">
+                    <div class="faq-item">
+                        <button class="faq-button">
+                            <span>How does an initial engagement begin?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            We start with a thorough discovery audit to understand your current operational bottlenecks and financial metrics. Following the initial call, we prepare a structured action plan.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-button">
+                            <span>What size companies do you typically work with?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            We specialize in mid-market growth enterprises, Series A+ startups, and established mid-size institutions seeking strategic realignments.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-button">
+                            <span>How are consulting fees structured?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            Our retainers are project-based or dynamic month-to-month arrangements aligned directly with target KPIs and deliverables.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-button">
+                            <span>Can your team work remotely or on-site?</span>
+                            <i class="fa-solid fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            We operate via a hybrid model, combining modern remote coordination tools with targeted on-site executive workshops as required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           8. CONTACT SECTION
+           ========================================================================== -->
+        <section class="section-padding contact" id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem;">Get in Touch</span>
+                        <h2 class="section-title" style="text-align: left; margin-top: 0.5rem;">Let's Discuss Your Growth Goals</h2>
+                        <p style="color: var(--gray-600); margin-bottom: 1.5rem;">
+                            Reach out to our advisory team today to schedule an initial strategic review.
+                        </p>
+
+                        <div class="contact-card">
+                            <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div class="contact-card-text">
+                                <h4>Phone Support</h4>
+                                <p><a href="tel:+2348000000000">+234 800 000 0000</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="contact-card-text">
+                                <h4>Email Inquiries</h4>
+                                <p><a href="mailto:contact@apexstrategy.com">contact@apexstrategy.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="contact-card-text">
+                                <h4>Headquarters</h4>
+                                <p>128 Business District Way, Victoria Island, Lagos</p>
+                            </div>
+                        </div>
+
+                        <!-- Placeholder Google Map Embed -->
+                        <div class="map-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.729124317135!2d3.42186831477017!3d6.428703995348821!2m3!1f0!f0!f0!m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf53280e7d48d%3A0x4d137b01968e7188!2sVictoria%20Island%2C%20Lagos!5e0!3m2!1sen!2sng!4v1680000000000!5m2!1sen!2sng" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="contact-form reveal">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem;">Send a Message</h3>
+                        <form id="main-contact-form" onsubmit="event.preventDefault(); alert('Message submitted successfully!');">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" id="name" class="form-input" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Work Email</label>
+                                <input type="email" id="email" class="form-input" placeholder="john@company.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" id="subject" class="form-input" placeholder="Strategic Consultation Request">
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" class="form-textarea" placeholder="Tell us about your business goals..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+       9. FOOTER
+       ========================================================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">Apex Strategy</a>
+                    <p class="footer-desc">Premium corporate consulting and modern growth frameworks for market leaders.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <div class="footer-links">
+                        <a href="#about">About Us</a>
+                        <a href="#services">Services</a>
+                        <a href="#why-us">Why Choose Us</a>
+                        <a href="#portfolio">Case Studies</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Legal</h4>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Security Overview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Apex Strategy Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp CTA Button -->
+    <a href="https://wa.me/2348000000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Back To Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- ==========================================================================
+       10. VANILLA JAVASCRIPT
+       ========================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Sticky Header Shadow on Scroll ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // --- Mobile Navigation Menu Toggle ---
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = hamburger.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Close mobile menu when link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    const icon = hamburger.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // --- Scroll Reveal Animations (Vanilla JS IntersectionObserver) ---
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Reveal once
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // --- Accordion FAQ Functionality ---
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const button = item.querySelector('.faq-button');
+                button.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all open FAQs
+                    faqItems.forEach(i => i.classList.remove('active'));
+
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // --- Back To Top Button visibility & smooth click ---
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
