@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceberry Gadgets | Nigeria's Premier iPhone Store</title>
+    <meta name="description" content="Certified smartphone and gadgets vendor. Buy, sell, and swap genuine iPhones with confidence. Brand New and UK Used devices available.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           1. RESET & BASE STYLES
+           ========================================================================== */
+        :root {
+            --bg-color: #000000;
+            --card-bg: rgba(22, 22, 23, 0.7);
+            --accent-blue: #2997ff;
+            --accent-glow: rgba(41, 151, 255, 0.35);
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        body {
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ==========================================================================
+           2. LOADING SCREEN
+           ========================================================================== */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--accent-blue);
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ==========================================================================
+           3. NAVIGATION
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-cta {
+            background: var(--accent-blue);
+            color: #fff !important;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600 !important;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .nav-cta:hover {
+            opacity: 0.9;
+            transform: scale(1.03);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION
+           ========================================================================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 30%, rgba(41, 151, 255, 0.15), transparent 60%);
+        }
+
+        .canvas-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 24px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 36px;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #fff;
+            box-shadow: 0 0 25px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           5. SECTION LAYOUTS
+           ========================================================================== */
+        section {
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* ==========================================================================
+           6. PRODUCTS SECTION
+           ========================================================================== */
+        .series-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .series-btn {
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .series-btn.active, .series-btn:hover {
+            background: var(--accent-blue);
+            color: #fff;
+            border-color: var(--accent-blue);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 24px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(41, 151, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-img-box {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .product-img-box img {
+            max-height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img-box img {
+            transform: scale(1.08);
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .product-tags {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid var(--border-glass);
+        }
+
+        .tag.available {
+            color: #30d158;
+            border-color: rgba(48, 209, 88, 0.2);
+            background: rgba(48, 209, 88, 0.05);
+        }
+
+        .btn-whatsapp {
+            width: 100%;
+            padding: 10px;
+            background: #25d366;
+            color: #fff;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+        }
+
+        /* ==========================================================================
+           7. FEATURES & WHY CHOOSE US
+           ========================================================================== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(20px);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(41, 151, 255, 0.1);
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Stats Counter */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================================
+           8. GALLERY
+           ========================================================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 250px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ==========================================================================
+           9. TESTIMONIALS
+           ========================================================================== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 24px;
+            backdrop-filter: blur(20px);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .user-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-info h4 {
+            font-size: 1rem;
+        }
+
+        .user-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* ==========================================================================
+           10. FAQ
+           ========================================================================== */
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-toggle {
+            transition: var(--transition);
+        }
+
+        /* ==========================================================================
+           11. CONTACT & FOOTER
+           ========================================================================== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-details p {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .map-box {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 250px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-glass);
+            padding: 40px 24px 20px;
+            text-align: center;
+            background: #000;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-glass);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Floating UI Elements */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 900;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ==========================================================================
+           12. RESPONSIVE DESIGN
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            section {
+                padding: 60px 16px;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .contact-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Animation -->
+    <div id="loader">
+        <div class="loader-logo"><i class="fa-brands fa-apple"></i> Iceberry</div>
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <header id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-brands fa-apple"></i> Iceberry Gadgets
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">iPhones</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="https://wa.me/2347056946904" target="_blank" class="nav-cta"><i class="fa-brands fa-whatsapp"></i> Chat Us</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <canvas id="hero-canvas" class="canvas-bg"></canvas>
+        <div class="hero-content">
+            <span class="hero-badge" data-aos="fade-down"><i class="fa-solid fa-shield-halved"></i> Certified Gadgets Vendor</span>
+            <h1 data-aos="fade-up" data-aos-delay="100">Nigeria's Trusted Premium iPhone Store</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Buy, Sell & Swap Genuine iPhones with Confidence. Offering Factory Sealed Brand New & Quality Tested UK Used Devices.</p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                <a href="#products" class="btn-primary">Shop iPhones <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/2347056946904" target="_blank" class="btn-secondary"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Collection Section -->
+    <section id="products">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">iPhone Collection</h2>
+            <p class="section-subtitle">Explore our certified inventory from iPhone 11 to the latest Series</p>
+        </div>
+
+        <!-- Series Filter -->
+        <div class="series-nav" data-aos="fade-up">
+            <button class="series-btn active" onclick="filterProducts('all')">All Models</button>
+            <button class="series-btn" onclick="filterProducts('17')">iPhone 17 Series</button>
+            <button class="series-btn" onclick="filterProducts('16')">iPhone 16 Series</button>
+            <button class="series-btn" onclick="filterProducts('15')">iPhone 15 Series</button>
+            <button class="series-btn" onclick="filterProducts('14')">iPhone 14 Series</button>
+            <button class="series-btn" onclick="filterProducts('13')">iPhone 13 Series</button>
+            <button class="series-btn" onclick="filterProducts('12')">iPhone 12 Series</button>
+            <button class="series-btn" onclick="filterProducts('11')">iPhone 11 Series</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="productGrid">
+            <!-- Dynamic Content Injected via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Core Services</h2>
+            <p class="section-subtitle">Designed around quality, trust, and luxury service</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up">
+                <div class="feature-icon"><i class="fa-solid fa-check-double"></i></div>
+                <h3>Genuine Apple Devices</h3>
+                <p>100% authentic iPhones sourced directly from verified channels. Guaranteed no refurbished knockoffs.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+                <h3>Quality Tested</h3>
+                <p>Every UK used device undergoes rigorous multi-point diagnostics including battery health and FaceID checks.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                <h3>Buy</h3>
+                <p>Purchase factory-sealed Brand New devices or pristine Condition UK Used iPhones with complete accessories.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up">
+                <div class="feature-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <h3>Sell</h3>
+                <p>Turn your old device into instant cash. We offer the best market evaluation rates in Nigeria.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon"><i class="fa-solid fa-rotate"></i></div>
+                <h3>Swap</h3>
+                <p>Upgrade effortlessly. Trade in your current phone and pay the difference for your dream iPhone.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <h3>Nationwide Delivery</h3>
+                <p>Fast, tracked, and secure doorstep delivery anywhere in Nigeria with full insurance coverage.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up">
+                <div class="feature-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                <h3>Warranty Support</h3>
+                <p>Enjoy absolute peace of mind with our transparent warranty coverage on all purchased smartphones.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                <h3>Customer Support</h3>
+                <p>Dedicated personal assistance via WhatsApp to help you choose, troubleshoot, and set up your device.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Why Choose Iceberry Gadgets</h2>
+            <p class="section-subtitle">Setting the gold standard for mobile retail</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up">
+                <h3>Trusted Vendor</h3>
+                <p>Built on integrity. Hundreds of verified client transactions across Lagos, Abuja, and nationwide.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Affordable Deals</h3>
+                <p>Luxury tech doesn't have to break the bank. Competitive pricing guaranteed without sacrificing quality.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Secure Transactions</h3>
+                <p>Safe payment pathways and full documentation provided for every transaction.</p>
+            </div>
+        </div>
+
+        <!-- Animated Stats Counter -->
+        <div class="stats-container" data-aos="zoom-in">
+            <div class="stat-item">
+                <div class="stat-number" data-target="5000">0</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="100">0</div>
+                <div class="stat-label">% Genuine Devices</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="365">0</div>
+                <div class="stat-label">Days Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Luxury Visuals</h2>
+            <p class="section-subtitle">A glimpse into our pristine devices & setup</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=600&q=80" alt="iPhone Gallery" loading="lazy"></div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=600&q=80" alt="iPhone Display" loading="lazy"></div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=600&q=80" alt="Apple Gadgets" loading="lazy"></div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1530319067432-f2a729c03db5?auto=format&fit=crop&w=600&q=80" alt="Luxury Setup" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section>
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Client Experiences</h2>
+            <p class="section-subtitle">What our valued buyers have to say</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card" data-aos="fade-up">
+                <div class="user-profile">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" class="user-img" alt="User">
+                    <div class="user-info">
+                        <h4>Aisha M.</h4>
+                        <p>Lagos, Nigeria</p>
+                    </div>
+                </div>
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="testimonial-text">"Swapped my iPhone 11 Pro for a Brand New 15 Pro. Smooth evaluation, clean deal. Iceberry is top tier!"</p>
+            </div>
+
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="user-profile">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="user-img" alt="User">
+                    <div class="user-info">
+                        <h4>Chinedu O.</h4>
+                        <p>Abuja, Nigeria</p>
+                    </div>
+                </div>
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="testimonial-text">"Ordered a UK Used iPhone 13 Pro Max. Battery health was 94% and device was spotless. Delivered to Abuja in 24 hrs."</p>
+            </div>
+
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="user-profile">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" class="user-img" alt="User">
+                    <div class="user-info">
+                        <h4>Funke A.</h4>
+                        <p>Port Harcourt, Nigeria</p>
+                    </div>
+                </div>
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="testimonial-text">"Customer support via WhatsApp is incredibly quick and respectful. Will definitely buy my next gadget here."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about purchasing with us</p>
+        </div>
+
+        <div class="faq-accordion">
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">
+                    <span>Are the phones original Apple devices?</span>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, 100%. We only deal in genuine Apple smartphones. Every device undergoes authentic serial checks prior to sale.
+                </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">
+                    <span>Do you sell UK Used phones?</span>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, we offer premium UK Used devices in spotless condition, fully tested with prime battery performance.
+                </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">
+                    <span>Do you deliver nationwide?</span>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, we deliver safely across all states in Nigeria using verified logistics partners with full tracking.
+                </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">
+                    <span>Can I swap my current phone?</span>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! You can swap your clean, operational iPhone for an upgrade. Reach out via WhatsApp to get an immediate value assessment.
+                </div>
+            </div>
+
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">
+                    <span>Do you offer warranty?</span>
+                    <i class="fa-solid fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, all devices come backed by warranty coverage against non-user induced technical defects.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container" data-aos="fade-up">
+            <div class="contact-info">
+                <h3>Iceberry Gadgets</h3>
+                <p style="color: var(--accent-blue); margin-bottom: 20px; font-size: 0.95rem;">We Buy • We Sell • We Swap Quality Gadgets</p>
+                <div class="contact-details">
+                    <p><i class="fa-brands fa-whatsapp"></i> +234 705 694 6904</p>
+                    <p><i class="fa-brands fa-instagram"></i> @iceberry_gadgets</p>
+                    <p><i class="fa-solid fa-clock"></i> Mon - Sat: 9:00 AM - 7:00 PM</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Nigeria (Nationwide Express Delivery)</p>
+                </div>
+                <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://wa.me/2347056946904" target="_blank" class="btn-primary"><i class="fa-brands fa-whatsapp"></i> WhatsApp Order</a>
+                    <a href="https://instagram.com/iceberry_gadgets" target="_blank" class="btn-secondary"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                </div>
+            </div>
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.63269411833!2d3.1191167448378807!3d6.54803572856037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1680000000000!5m2!1sen!2sng" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo"><i class="fa-brands fa-apple"></i> Iceberry Gadgets</div>
+            <div class="social-links">
+                <a href="https://wa.me/2347056946904" target="_blank" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com/iceberry_gadgets" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 Iceberry Gadgets. All rights reserved. Built with precision.</p>
+        </div>
+    </footer>
+
+    <!-- Back To Top Button -->
+    <div class="back-to-top" id="backToTop"><i class="fa-solid fa-arrow-up"></i></div>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        /* ==========================================================================
+           PRODUCT DATA STORE (All requested models included)
+           ========================================================================== */
+        const products = [
+            // iPhone 17 Series
+            { name: "iPhone 17 Pro Max", series: "17", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 17 Pro", series: "17", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 17 Air", series: "17", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 17", series: "17", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+
+            // iPhone 16 Series
+            { name: "iPhone 16 Pro Max", series: "16", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 16 Pro", series: "16", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 16 Plus", series: "16", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 16", series: "16", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 16e", series: "16", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+
+            // iPhone 15 Series
+            { name: "iPhone 15 Pro Max", series: "15", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 15 Pro", series: "15", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 15 Plus", series: "15", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 15", series: "15", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+
+            // iPhone 14 Series
+            { name: "iPhone 14 Pro Max", series: "14", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 14 Pro", series: "14", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 14 Plus", series: "14", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 14", series: "14", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+
+            // iPhone 13 Series
+            { name: "iPhone 13 Pro Max", series: "13", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 13 Pro", series: "13", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 13 Mini", series: "13", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 13", series: "13", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+
+            // iPhone 12 Series
+            { name: "iPhone 12 Pro Max", series: "12", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 12 Pro", series: "12", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 12 Mini", series: "12", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 12", series: "12", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" },
+
+            // iPhone 11 Series
+            { name: "iPhone 11 Pro Max", series: "11", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 11 Pro", series: "11", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80" },
+            { name: "iPhone 11", series: "11", img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80" }
+        ];
+
+        /* ==========================================================================
+           RENDER PRODUCTS
+           ========================================================================== */
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            items.forEach((item) => {
+                const waMessage = encodeURIComponent(`Hello Iceberry Gadgets, I am interested in inquiring about availability/price for the ${item.name}.`);
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-aos', 'fade-up');
+                card.innerHTML = `
+                    <div class="product-img-box">
+                        <img src="${item.img}" alt="${item.name}" loading="lazy">
+                    </div>
+                    <div class="product-title">${item.name}</div>
+                    <div class="product-tags">
+                        <span class="tag available"><i class="fa-solid fa-circle-check"></i> Available</span>
+                        <span class="tag">Brand New</span>
+                        <span class="tag">UK Used</span>
+                    </div>
+                    <a href="https://wa.me/2347056946904?text=${waMessage}" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp to Order
+                    </a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterProducts(series) {
+            const buttons = document.querySelectorAll('.series-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (series === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.series === series);
+                renderProducts(filtered);
+            }
+        }
+
+        /* ==========================================================================
+           CANVAS FLOATING PARTICLES (HERO BACKGROUND)
+           ========================================================================== */
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.radius = Math.random() * 2 + 1;
+                this.color = '#2997ff';
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.alpha = Math.random() * 0.5 + 0.1;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#2997ff';
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 60; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        /* ==========================================================================
+           STAT COUNTER ANIMATION
+           ========================================================================== */
+        let statsAnimated = false;
+        function animateCounters() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const statsSection = document.querySelector('.stats-container');
+            
+            if (!statsSection) return;
+            const position = statsSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+
+            if (position < screenPosition && !statsAnimated) {
+                statNumbers.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    let count = 0;
+                    const speed = target / 50;
+
+                    const updateCount = () => {
+                        count += speed;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count) + '+';
+                            setTimeout(updateCount, 30);
+                        } else {
+                            counter.innerText = target + '+';
+                        }
+                    };
+                    updateCount();
+                });
+                statsAnimated = true;
+            }
+        }
+
+        /* ==========================================================================
+           INTERACTIVE EVENT LISTENERS & INITIALIZATION
+           ========================================================================== */
+        window.addEventListener('load', () => {
+            // Remove Loader
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                easing: 'ease-out'
+            });
+
+            // Initialize Canvas Particles
+            resizeCanvas();
+            initParticles();
+            animateParticles();
+
+            // Render All Products
+            renderProducts(products);
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Sticky Navbar & Back-To-Top
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.85)';
+                backToTop.classList.add('visible');
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.6)';
+                backToTop.classList.remove('visible');
+            }
+
+            animateCounters();
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
